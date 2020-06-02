@@ -35,13 +35,12 @@ class trunkCar: Car {
         tankFull = !tankFull
     }
     
-    func description() {
-           print("Name: " + name)
-           print("Windows: \(windows)")
-           print("Engine: \(engine)")
-           print("Year: \(year)")
-           print("Nitro: \(tankFull)")
-       }
+}
+
+extension trunkCar: CustomStringConvertible {
+    var description: String {
+        return "Name: \(name)\nWindows: \(windows)\nEngine: \(engine)\nYear: \(year)\nTankFull: \(tankFull)"
+    }
 }
 
 class sportCar: Car {
@@ -63,23 +62,21 @@ class sportCar: Car {
         nitro = !nitro
     }
 
-    func description() {
-        print("Name: " + name)
-        print("Windows: \(windows)")
-        print("Engine: \(engine)")
-        print("Year: \(year)")
-        print("Nitro: \(nitro)")
-    }
 }
 
+extension sportCar: CustomStringConvertible {
+    var description: String {
+        return "Name: \(name)\nWindows: \(windows)\nEngine: \(engine)\nYear: \(year)\nNitro: \(nitro)"
+    }
+}
 var kamaz = trunkCar(name: "kamaz", windows: true, engine: true, year: 1992, tankFull: true)
 kamaz.fillFreeTank()
 kamaz.startStopEngine()
 kamaz.openCloseWindows()
-kamaz.description()
+print(kamaz.description)
 print("------------------------------")
 var ferrari = sportCar(name: "ferrari", windows: false, engine: false, year: 1995, nitro: false)
 ferrari.startStopNitro()
 ferrari.startStopEngine()
 ferrari.openCloseWindows()
-ferrari.description()
+print(ferrari.description)
